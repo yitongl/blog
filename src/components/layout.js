@@ -8,14 +8,13 @@ class Layout extends React.Component {
   render() {
     const { location, title, children } = this.props
     const rootPath = `${__PATH_PREFIX__}/`
-    const blogPath = `${__PATH_PREFIX__}/blog/`
     let header
 
-    if (location.pathname === rootPath || location.pathname === blogPath) {
+    if (location.pathname === rootPath) {
       header = (
         <h1
           style={{
-            ...scale(1.5),
+            ...scale(0.8),
             marginBottom: rhythm(1.5),
             marginTop: 0,
           }}
@@ -26,7 +25,7 @@ class Layout extends React.Component {
               textDecoration: `none`,
               color: `inherit`,
             }}
-            to={location.pathname === blogPath ? `/blog/` : `/`}
+            to={`/`}
           >
             {title}
           </Link>
@@ -36,7 +35,6 @@ class Layout extends React.Component {
       header = (
         <h3
           style={{
-            fontFamily: `Montserrat, sans-serif`,
             marginTop: 0,
           }}
         >
@@ -46,7 +44,7 @@ class Layout extends React.Component {
               textDecoration: `none`,
               color: `inherit`,
             }}
-            to={`/blog/`}
+            to={`/`}
           >
             {title}
           </Link>
@@ -66,11 +64,6 @@ class Layout extends React.Component {
           <header>{header}</header>
           <main>{children}</main>
         </div>
-        <Footer>
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.org">Gatsby</a>
-        </Footer>
       </Wrapper>
     )
   }
@@ -78,11 +71,6 @@ class Layout extends React.Component {
 
 const Wrapper = styled.div`
   min-height: 100vh;
-`
-
-const Footer = styled.footer`
-  text-align: center;
-  margin: 24px;
 `
 
 export default Layout
